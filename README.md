@@ -6,7 +6,7 @@ A modern movie streaming frontend inspired by platforms like Netflix, built with
 Add your GitHub Pages link here after deployment.
 
 Example:
-https://mohamed1234ed.github.io/cineverse
+https://mohamed1234ed.github.io/cineverse/
 
 ---
 
