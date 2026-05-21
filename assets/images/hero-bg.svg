@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#08111d"/>
+      <stop offset="100%" stop-color="#162f4c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#g)"/>
+  <circle cx="1500" cy="320" r="200" fill="#0f172a" opacity="0.8"/>
+  <rect x="220" y="280" width="760" height="400" rx="40" fill="#0f172a" opacity="0.75"/>
+  <text x="600" y="450" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="700">Welcome to CineVerse</text>
+  <text x="600" y="530" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="28">Now using local assets for posters and backgrounds</text>
+</svg>

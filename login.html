@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - CineVerse</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .login-container {
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      margin-top: -80px;
+    }
+
+    .login-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .login-left {
+      animation: slideInLeft 0.8s ease;
+    }
+
+    .login-left h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, var(--text-white) 0%, #ff6b6b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .login-left p {
+      font-size: 18px;
+      color: var(--text-gray);
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .login-features {
+      list-style: none;
+    }
+
+    .login-features li {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: var(--text-white);
+    }
+
+    .login-features i {
+      color: var(--accent-red);
+      font-size: 20px;
+    }
+
+    .login-right {
+      background: rgba(20, 20, 20, 0.8);
+      border: 1px solid rgba(229, 9, 20, 0.2);
+      padding: 50px;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      animation: slideInRight 0.8s ease;
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .login-form h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .login-form .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(229, 9, 20, 0.2);
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-gray);
+      padding: 15px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: var(--transition);
+      border-bottom: 3px solid transparent;
+      position: relative;
+      bottom: -1px;
+    }
+
+    .tab-btn.active {
+      color: var(--accent-red);
+      border-bottom-color: var(--accent-red);
+    }
+
+    .tab-btn:hover {
+      color: var(--accent-red);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-white);
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(229, 9, 20, 0.3);
+      border-radius: 8px;
+      color: var(--text-white);
+      font-family: inherit;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+
+    .form-group input::placeholder {
+      color: var(--text-gray);
+    }
+
+    .form-group input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--accent-red);
+      box-shadow: 0 0 10px rgba(229, 9, 20, 0.3);
+    }
+
+    .form-group.checkbox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-group.checkbox input {
+      width: auto;
+    }
+
+    .form-group.checkbox label {
+      margin-bottom: 0;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, var(--accent-red) 0%, #ff6b6b 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-bottom: 20px;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4);
+    }
+
+    .login-divider {
+      text-align: center;
+      margin: 25px 0;
+      font-size: 14px;
+      color: var(--text-gray);
+    }
+
+    .social-login {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-btn {
+      flex: 1;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(229, 9, 20, 0.3);
+      border-radius: 8px;
+      color: var(--text-white);
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .social-btn:hover {
+      background: rgba(229, 9, 20, 0.2);
+      border-color: var(--accent-red);
+    }
+
+    .login-footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--text-gray);
+    }
+
+    .login-footer a {
+      color: var(--accent-red);
+      text-decoration: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .login-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .form-content {
+      display: none;
+    }
+
+    .form-content.active {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .login-wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .login-left h1 {
+        font-size: 36px;
+      }
+
+      .login-right {
+        padding: 30px;
+      }
+
+      .login-form h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-film"></i>
+        <span>CineVerse</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="movies.html">Movies</a></li>
+        <li><a href="series.html">Series</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <a href="index.html" style="color: var(--accent-red); text-decoration: none; font-weight: 600;">← Back to Home</a>
+      </div>
+
+      <button class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============ LOGIN CONTAINER ============ -->
+  <section class="login-container">
+    <div class="login-wrapper">
+      <!-- Left Side -->
+      <div class="login-left">
+        <h1>Welcome to CineVerse</h1>
+        <p>Join millions of viewers enjoying unlimited entertainment. Watch movies and series anytime, anywhere.</p>
+        
+        <ul class="login-features">
+          <li>
+            <i class="fas fa-star"></i>
+            <span>Unlimited Streaming</span>
+          </li>
+          <li>
+            <i class="fas fa-mobile-alt"></i>
+            <span>Watch on any device</span>
+          </li>
+          <li>
+            <i class="fas fa-download"></i>
+            <span>Download for offline</span>
+          </li>
+          <li>
+            <i class="fas fa-users"></i>
+            <span>Multi-user profiles</span>
+          </li>
+          <li>
+            <i class="fas fa-film"></i>
+            <span>Latest & Trending</span>
+          </li>
+          <li>
+            <i class="fas fa-hd"></i>
+            <span>4K Ultra HD</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right Side - Login Form -->
+      <div class="login-right">
+        <div class="login-form">
+          <h2>Sign In</h2>
+          
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="login">Login</button>
+            <button class="tab-btn" data-tab="register">Register</button>
+          </div>
+
+          <!-- Login Form -->
+          <div class="form-content active" id="login-content">
+            <form id="login-form" onsubmit="handleLogin(event)">
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="your@email.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+              </div>
+
+              <div class="form-group checkbox">
+                <input type="checkbox" id="remember">
+                <label for="remember">Remember me</label>
+              </div>
+
+              <button type="submit" class="login-btn">
+                <i class="fas fa-sign-in-alt"></i>
+                Sign In
+              </button>
+            </form>
+
+            <div class="login-divider">or continue with</div>
+
+            <div class="social-login">
+              <button class="social-btn">
+                <i class="fab fa-google"></i>
+                Google
+              </button>
+              <button class="social-btn">
+                <i class="fab fa-facebook"></i>
+                Facebook
+              </button>
+            </div>
+
+            <div class="login-footer">
+              <p><a onclick="resetPassword()">Forgot password?</a></p>
+            </div>
+          </div>
+
+          <!-- Register Form -->
+          <div class="form-content" id="register-content">
+            <form id="register-form" onsubmit="handleRegister(event)">
+              <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" placeholder="John Doe" required>
+              </div>
+
+              <div class="form-group">
+                <label for="reg-email">Email Address</label>
+                <input type="email" id="reg-email" placeholder="your@email.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="reg-password">Password</label>
+                <input type="password" id="reg-password" placeholder="••••••••" required>
+              </div>
+
+              <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="••••••••" required>
+              </div>
+
+              <div class="form-group checkbox">
+                <input type="checkbox" id="agree" required>
+                <label for="agree">I agree to Terms & Conditions</label>
+              </div>
+
+              <button type="submit" class="login-btn">
+                <i class="fas fa-user-plus"></i>
+                Create Account
+              </button>
+            </form>
+
+            <div class="login-footer">
+              <p>Already have an account? <a onclick="switchTab('login')">Sign In</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        switchTab(tab);
+      });
+    });
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.form-content').forEach(content => content.classList.remove('active'));
+
+      document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+      document.getElementById(`${tab}-content`).classList.add('active');
+    }
+
+    // Handle Login
+    function handleLogin(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      // Simulate login
+      localStorage.setItem('userEmail', email);
+      alert(`Welcome back!\nLogged in as: ${email}`);
+      setTimeout(() => window.location.href = 'index.html', 1000);
+    }
+
+    // Handle Register
+    function handleRegister(event) {
+      event.preventDefault();
+      const fullname = document.getElementById('fullname').value;
+      const email = document.getElementById('reg-email').value;
+      const password = document.getElementById('reg-password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+      }
+
+      // Simulate registration
+      localStorage.setItem('userName', fullname);
+      localStorage.setItem('userEmail', email);
+      alert(`Account created successfully!\n\nWelcome, ${fullname}!\n\nRedirecting to home page...`);
+      setTimeout(() => window.location.href = 'index.html', 1500);
+    }
+
+    // Reset password
+    function resetPassword() {
+      alert('Password reset link sent to your email!\n\n(Demo: Check your email for instructions)');
+    }
+  </script>
+</body>
+</html>

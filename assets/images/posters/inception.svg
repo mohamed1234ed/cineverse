@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="750">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g)" rx="40" ry="40" />
+  <rect x="20" y="20" width="460" height="710" fill="rgba(0,0,0,0.18)" rx="36" ry="36" />
+  <text x="50%" y="35%" fill="#fff" font-family="Poppins, sans-serif" font-size="36" font-weight="700" text-anchor="middle">Inception</text>
+  <text x="50%" y="55%" fill="#f8fafc" font-family="Inter, sans-serif" font-size="20" text-anchor="middle">CineVerse Poster</text>
+  <text x="50%" y="90%" fill="#f8fafc" font-family="Inter, sans-serif" font-size="14" text-anchor="middle">assets/images/posters/inception.svg</text>
+</svg>

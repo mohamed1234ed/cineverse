@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies - CineVerse</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/movies.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-film"></i>
+        <span>CineVerse</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="movies.html">Movies</a></li>
+        <li><a href="series.html">Series</a></li>
+        <li><a href="index.html#trending">Trending</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <div class="search-box">
+          <input type="text" placeholder="Search movies...">
+          <i class="fas fa-search"></i>
+        </div>
+        <div class="profile-icon">
+          <i class="fas fa-user"></i>
+        </div>
+      </div>
+
+      <button class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============ PAGE HEADER ============ -->
+  <section class="section" style="margin-top: 80px;">
+    <h1 class="section-title" style="font-size: 48px; margin-bottom: 20px;">
+      <i class="fas fa-film"></i>
+      Movies
+    </h1>
+    <p style="color: var(--text-gray); font-size: 16px; margin-bottom: 30px;">
+      Browse our collection of incredible movies. Find your next favorite film.
+    </p>
+
+    <!-- ============ FILTERS ============ -->
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="Action">Action</button>
+      <button class="filter-btn" data-filter="Horror">Horror</button>
+      <button class="filter-btn" data-filter="Sci-Fi">Sci-Fi</button>
+      <button class="filter-btn" data-filter="Comedy">Comedy</button>
+      <button class="filter-btn" data-filter="Drama">Drama</button>
+      <button class="filter-btn" data-filter="Anime">Anime</button>
+    </div>
+  </section>
+
+  <!-- ============ MOVIES GRID ============ -->
+  <section class="section">
+    <div id="movies-container" class="movies-grid">
+      <!-- Movies will be populated by JavaScript -->
+    </div>
+  </section>
+
+  <!-- ============ TRAILER MODAL ============ -->
+  <div id="trailer-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Trailer</h2>
+        <button class="modal-close" onclick="closeTrailer()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="video-container">
+          <iframe id="trailer-video" width="100%" height="500" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About CineVerse</h3>
+          <p>Your ultimate streaming platform for movies and series.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="movies.html">Movies</a></li>
+            <li><a href="series.html">Series</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CineVerse. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/slider.js"></script>
+  <script>
+    // Populate movies grid
+    function populateMovies(moviesToShow = moviesData) {
+      const container = document.getElementById('movies-container');
+      const html = moviesToShow.map(movie => `
+        <div class="movie-card stagger-item" data-id="${movie.id}" data-title="${movie.title}">
+          <img src="${movie.image}" alt="${movie.title}" class="movie-image">
+          <div class="movie-info">
+            <h3 class="movie-title">${movie.title}</h3>
+            <div class="movie-meta">
+              <span class="movie-rating">
+                <i class="fas fa-star"></i>
+                ${movie.rating}
+              </span>
+              <span>${movie.genre}</span>
+            </div>
+          </div>
+          <div class="movie-overlay">
+            <button class="play-btn" title="Watch Trailer">
+              <i class="fas fa-play"></i>
+            </button>
+            <div class="movie-overlay-info">
+              <h3>${movie.title}</h3>
+              <p>${movie.genre}</p>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      container.innerHTML = html;
+      
+      // Re-initialize favorites and scroll animations
+      initFavorites();
+      initScrollAnimations();
+    }
+
+    // Filter functionality
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+
+        const filter = e.target.dataset.filter;
+        if (filter === 'all') {
+          populateMovies(moviesData);
+        } else {
+          populateMovies(moviesData.filter(m => m.genre === filter));
+        }
+      });
+    });
+
+    // Initialize movies on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      populateMovies(moviesData);
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeTrailer();
+      }
+    });
+  </script>
+</body>
+</html>
